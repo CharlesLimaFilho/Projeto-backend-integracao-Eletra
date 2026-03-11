@@ -1,1 +1,1 @@
-# Projeto-02-backend-integracao-Eletra
+# Projeto-backend-integracao-Eletra
