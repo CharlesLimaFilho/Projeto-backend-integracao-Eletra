@@ -9,9 +9,9 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 <!--        <property name="hibernate.show_sql">true</property>-->
 
-        <mapping class="mapping.LineTable"/>
-        <mapping class="mapping.CategoryTable"/>
-        <mapping class="mapping.ModelTable"/>
+        <mapping class="org.project.model.mapping.LineTable"/>
+        <mapping class="org.project.model.mapping.CategoryTable"/>
+        <mapping class="org.project.model.mapping.ModelTable"/>
 
     </session-factory>
 </hibernate-configuration>
