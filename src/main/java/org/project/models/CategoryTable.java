@@ -1,24 +1,24 @@
-package mapping;
+package org.project.models;
 
 import org.hibernate.Session;
-import org.project.model.DataBaseHelper;
+import org.project.DataBaseHelper;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "categories")
-public class CategoryTable {
+public class CategoryTable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_category;
+    private Integer id_category;
 
     private String category_name;
 
     private int id_line;
 
-    public CategoryTable(int id_category, String category_name){
+    public CategoryTable(Integer id_category, String category_name){
         this.id_category = id_category;
         this.category_name = category_name;
     }
@@ -27,11 +27,11 @@ public class CategoryTable {
         super();
     }
 
-    public int getId_category() {
+    public Integer getId_category() {
         return id_category;
     }
 
-    public void setId_category(int id_category) {
+    public void setId_category(Integer id_category) {
         this.id_category = id_category;
     }
 

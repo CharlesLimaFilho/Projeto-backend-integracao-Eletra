@@ -1,7 +1,7 @@
-package mapping;
+package org.project.models;
 
 import org.hibernate.Session;
-import org.project.model.DataBaseHelper;
+import org.project.DataBaseHelper;
 
 import javax.persistence.*;
 import java.util.List;
