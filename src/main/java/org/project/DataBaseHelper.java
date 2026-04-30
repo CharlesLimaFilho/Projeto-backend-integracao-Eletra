@@ -1,4 +1,4 @@
-package org.project.model;
+package org.project;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
