@@ -1,0 +1,7 @@
+stages:
+    - build
+
+build-back:
+    stage: build
+    script:
+        - 'mvn clean install'
