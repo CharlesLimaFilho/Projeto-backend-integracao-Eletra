@@ -1,3 +1,7 @@
+variables:
+  MAVEN_OPTS:
+    Dmaven.repo.local=.m2/repository
+
 default:
   image: maven:3.9.15-amazoncorretto-11
 
@@ -6,4 +10,14 @@ stages:
 
 build-back:
   stage: build
+  cache:
+    key: "maven-$CI_COMMIT_REF_SLUG"
+    paths:
+      - .m2/repository
+
   script: 'mvn clean install'
+
+  artifacts:
+    name: "Maven artifacts from $CI_PROJECT_NAME on $CI_COMMIT_REF_SLUG"
+    paths:
+      - "**/target"
