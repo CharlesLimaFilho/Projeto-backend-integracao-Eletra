@@ -2,6 +2,7 @@ stages:
     - build
 
 build-back:
+    image: maven:3.9.15-amazoncorretto-11
     stage: build
     script:
         - 'mvn clean install'
