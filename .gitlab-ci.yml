@@ -1,9 +1,8 @@
-default:
-  image: maven:3.9.15-amazoncorretto-11
-
 stages:
   - build
 
 build-back:
   stage: build
+  tags:
+    - local_runner
   script: 'mvn clean install'
