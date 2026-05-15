@@ -1,6 +1,6 @@
 package org.project.controllers;
 
-import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -32,10 +32,11 @@ public class LineControllerTest {
     @Spy
     private LineController lineController;
 
-//    @Before
-//    public void setUp() {
-//        lineController = spy(LineController.class);
-//    }
+    @After
+    public void tearDown() {
+        lineService = null;
+        lineController = null;
+    }
 
     @Test
     public void getAllLinesTest01() {
@@ -129,7 +130,7 @@ public class LineControllerTest {
     }
 
     @Test
-    public void postLineTest01() {
+    public void updateLineTest01() {
         ArgumentCaptor<LineTable> captor = ArgumentCaptor.forClass(LineTable.class);
 
         LineDto expectedLineDto = new LineDto();
@@ -151,7 +152,7 @@ public class LineControllerTest {
     }
 
     @Test
-    public void postLineTest02() {
+    public void updateLineTest02() {
         LineDto expectedLineDto = new LineDto();
         expectedLineDto.setLineName("Cronos-2");
 

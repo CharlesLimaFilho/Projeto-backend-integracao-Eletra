@@ -19,8 +19,7 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ModelServiceTest {
@@ -31,25 +30,6 @@ public class ModelServiceTest {
     @InjectMocks
     @Spy
     private ModelService modelService;
-
-//    private final List<ModelTable> expectedModelsTables = new ArrayList<>(Arrays.asList(
-//            new ModelTable(1, "Cronos 6001-A", 1),
-//            new ModelTable(2, "Cronos 6003", 1),
-//            new ModelTable(3, "Cronos 7023", 1),
-//            new ModelTable(4, "Cronos 6021L", 2),
-//            new ModelTable(5, "Cronos 7023L", 2),
-//            new ModelTable(6, "Cronos 6001-NG", 3),
-//            new ModelTable(7, "Cronos 6003-NG", 3),
-//            new ModelTable(8, "Cronos 6021-NG", 3),
-//            new ModelTable(9, "Cronos 6031-NG", 3),
-//            new ModelTable(10, "Cronos 7021-NG", 3),
-//            new ModelTable(11, "Cronos 7023-NG", 3),
-//            new ModelTable(12, "Ares 7021", 4),
-//            new ModelTable(13, "Ares 7031", 4),
-//            new ModelTable(14, "Ares 7023", 4),
-//            new ModelTable(15, "Ares 8023 15", 5),
-//            new ModelTable(16, "Ares 8023 200", 5),
-//            new ModelTable(17, "Ares 8023 2,5", 5)));
 
     @After
     public void tearDown() {
@@ -151,5 +131,16 @@ public class ModelServiceTest {
         assertEquals(expectedModelTable, savedModelTable);
 
         verify(modelRepository).save(expectedModelTable);
+    }
+
+    @Test
+    public void deleteTest01() {
+        ModelTable deleteModelTable = new ModelTable(1, "Cronos 6001-A", 1);
+
+        doNothing().when(modelRepository).delete(deleteModelTable);
+
+        modelService.delete(deleteModelTable);
+
+        verify(modelRepository).delete(deleteModelTable);
     }
 }

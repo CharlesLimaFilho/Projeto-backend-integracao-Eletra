@@ -18,8 +18,7 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LineServiceTest {
@@ -107,27 +106,14 @@ public class LineServiceTest {
         verify(lineRepository).save(saveLineTable);
     }
 
-//    @Test
-//    public void saveTest02() {
-//        LineTable expectedLineTable = new LineTable(2, "Ares");
-//
-//        when(lineRepository.save(any(LineTable.class))).thenReturn(expectedLineTable);
-//
-//        LineTable saveLineTable = new LineTable(2, "Ares");
-//
-//        LineTable lineTable = lineService.save(saveLineTable);
-//        assertEquals(expectedLineTable.getId_line(), lineTable.getId_line());
-//        verify(lineRepository).save(saveLineTable);
-//    }
-
     @Test
     public void deleteTest01() {
-        List<LineTable> beforeDeleteLines = new ArrayList<>(Arrays.asList(new LineTable(1, "Cronos"),
-                new LineTable(2, "Ares")));
+        LineTable deleteLineTable = new LineTable(1, "Cronos");
 
+        doNothing().when(lineRepository).delete(any(LineTable.class));
 
-        //when(lineRepository.delete(beforeDeleteLines.get())).thenReturn(null);
+        lineService.delete(deleteLineTable);
 
-        lineService.delete(beforeDeleteLines.get(0));
+        verify(lineRepository).delete(deleteLineTable);
     }
 }

@@ -18,8 +18,7 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CategoryServiceTest {
@@ -171,6 +170,12 @@ public class CategoryServiceTest {
 
     @Test
     public void deleteTest01() {
+        CategoryTable deleteCategoryTable = new CategoryTable(1, "Cronos Old" ,1);
 
+        doNothing().when(categoryRepository).delete(any(CategoryTable.class));
+
+        categoryService.delete(deleteCategoryTable);
+
+        verify(categoryRepository).delete(deleteCategoryTable);
     }
 }
