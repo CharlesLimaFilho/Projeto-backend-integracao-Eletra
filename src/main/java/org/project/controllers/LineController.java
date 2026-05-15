@@ -44,11 +44,11 @@ public class LineController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Line ID not found");
         }
 
-        return  ResponseEntity.status(HttpStatus.OK).body(lineTableOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body(lineTableOptional.get());
     }
 
     @DeleteMapping("/{id_line}")
-    public ResponseEntity<Object> deleteLine(@PathVariable(value = "id_line")  Integer id_line) {
+    public ResponseEntity<Object> deleteLine(@PathVariable(value = "id_line") Integer id_line) {
         Optional<LineTable> lineTableOptional = lineService.findById(id_line);
 
         if (!lineTableOptional.isPresent()) {

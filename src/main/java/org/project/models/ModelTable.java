@@ -4,11 +4,12 @@ import org.hibernate.Session;
 import org.project.DataBaseHelper;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "models")
-public class ModelTable {
+public class ModelTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

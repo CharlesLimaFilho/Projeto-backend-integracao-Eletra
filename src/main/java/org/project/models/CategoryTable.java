@@ -4,11 +4,12 @@ import org.hibernate.Session;
 import org.project.DataBaseHelper;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "categories")
-public class CategoryTable{
+public class CategoryTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +19,10 @@ public class CategoryTable{
 
     private int id_line;
 
-    public CategoryTable(Integer id_category, String category_name){
+    public CategoryTable(Integer id_category, String category_name, int id_line) {
         this.id_category = id_category;
         this.category_name = category_name;
+        this.id_line = id_line;
     }
 
     public CategoryTable() {
