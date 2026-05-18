@@ -53,7 +53,7 @@ public class CategoryController {
         Optional<CategoryTable> categoryTableOptional = categoryService.findById(id_category);
 
         if (!categoryTableOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Category ID not found");
         }
 
         categoryService.delete(categoryTableOptional.get());
@@ -66,7 +66,7 @@ public class CategoryController {
         Optional<CategoryTable> categoryTableOptional = categoryService.findById(id_category);
 
         if (!categoryTableOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Category ID not found");
         }
 
         CategoryTable categoryTable = categoryTableOptional.get();

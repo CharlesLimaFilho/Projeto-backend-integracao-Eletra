@@ -1,14 +1,11 @@
 package org.project.models;
 
-import org.hibernate.Session;
-import org.project.DataBaseHelper;
-
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "models")
-public class ModelTable {
+public class ModelTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,13 +47,5 @@ public class ModelTable {
 
     public void setId_category(int id_category) {
         this.id_category = id_category;
-    }
-
-    public static List<ModelTable> getModelsByCategoryId(int categoryId) {
-        Session session = DataBaseHelper.startConnection();
-        Query query =  session.createQuery("from ModelTable m where m.id_category =:categoryId");
-
-        query.setParameter("categoryId", categoryId).getResultList();
-        return query.getResultList();
     }
 }

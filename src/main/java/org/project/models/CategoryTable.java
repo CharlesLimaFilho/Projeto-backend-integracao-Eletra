@@ -1,14 +1,11 @@
 package org.project.models;
 
-import org.hibernate.Session;
-import org.project.DataBaseHelper;
-
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "categories")
-public class CategoryTable{
+public class CategoryTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +15,10 @@ public class CategoryTable{
 
     private int id_line;
 
-    public CategoryTable(Integer id_category, String category_name){
+    public CategoryTable(Integer id_category, String category_name, int id_line) {
         this.id_category = id_category;
         this.category_name = category_name;
+        this.id_line = id_line;
     }
 
     public CategoryTable() {
@@ -49,13 +47,5 @@ public class CategoryTable{
 
     public void setId_line(int id_line) {
         this.id_line = id_line;
-    }
-
-    public static List<CategoryTable> getCategoriesByLineId(int lineId) {
-        Session session = DataBaseHelper.startConnection();
-
-        Query query = session.createQuery("from CategoryTable c where c.id_line = :lineId");
-        query.setParameter("lineId", lineId);
-        return query.getResultList();
     }
 }

@@ -1,11 +1,6 @@
 package org.project.models;
 
-
-import org.hibernate.Session;
-import org.project.DataBaseHelper;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "lines")
@@ -40,12 +35,5 @@ public class LineTable {
 
     public void setLine_name(String line_name) {
         this.line_name = line_name;
-    }
-
-    public static List<LineTable> getLines() {
-        Session session = DataBaseHelper.startConnection();
-        Query query = session.createQuery("from LineTable l");
-
-        return query.getResultList();
     }
 }

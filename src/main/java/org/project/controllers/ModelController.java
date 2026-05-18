@@ -24,7 +24,7 @@ public class ModelController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody @Valid ModelDto modelDto) {
+    public ResponseEntity<Object> saveModel(@RequestBody @Valid ModelDto modelDto) {
         ModelTable modelTable = new ModelTable();
         BeanUtils.copyProperties(modelDto, modelTable);
 
@@ -32,12 +32,12 @@ public class ModelController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ModelTable>> findAll() {
+    public ResponseEntity<List<ModelTable>> getAllModels() {
         return ResponseEntity.status(HttpStatus.OK).body(modelService.findAll());
     }
 
     @GetMapping("/{id_category}")
-    public ResponseEntity<Object> findById(@PathVariable(value = "id_category") Integer id_category) {
+    public ResponseEntity<Object> getModelsByCategoryId(@PathVariable(value = "id_category") Integer id_category) {
         List<ModelTable> modelTableList = modelService.findModelsByCategoryId(id_category);
 
         if (modelTableList.isEmpty()) {
@@ -56,7 +56,7 @@ public class ModelController {
         }
 
         modelService.delete(modelTableOptional.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Deleted model");
+        return ResponseEntity.status(HttpStatus.OK).body("Model deleted");
     }
 
     @PutMapping("/{id_model}")
