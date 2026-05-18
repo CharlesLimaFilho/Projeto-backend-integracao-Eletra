@@ -1,11 +1,7 @@
 package org.project.models;
 
-import org.hibernate.Session;
-import org.project.DataBaseHelper;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -51,13 +47,5 @@ public class CategoryTable implements Serializable {
 
     public void setId_line(int id_line) {
         this.id_line = id_line;
-    }
-
-    public static List<CategoryTable> getCategoriesByLineId(int lineId) {
-        Session session = DataBaseHelper.startConnection();
-
-        Query query = session.createQuery("from CategoryTable c where c.id_line = :lineId");
-        query.setParameter("lineId", lineId);
-        return query.getResultList();
     }
 }
